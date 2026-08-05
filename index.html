@@ -203,6 +203,21 @@
 <footer>
     <p>&copy; 2026 Alvora Clothing - جميع الحقوق محفوظة</p>
 </footer>
+    World<script>
+  let cartCount = 0;
+  const cartButtons = document.querySelectorAll('.add-to-cart-btn'); // أو اسم الكلاس الخاص بزر إضافة للسلة
+  const cartIcon = document.querySelector('.cart-icon'); // كلاس إيقونة السلة
+
+  cartButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      cartCount++;
+      alert('تمت إضافة المنتج إلى السلة!');
+      if(cartIcon) {
+        cartIcon.innerText = `السلة (${cartCount})`;
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
