@@ -53,12 +53,13 @@
             margin-bottom: 5px;
             font-weight: bold;
         }
-        .card select, .checkout-section select {
+        .card select, .checkout-section input, .checkout-section select {
             width: 100%;
             padding: 8px;
             border-radius: 4px;
             border: 1px solid #ccc;
             font-size: 14px;
+            box-sizing: border-box;
         }
         .btn-add {
             background: #28a745;
@@ -74,7 +75,7 @@
         }
         .btn-add:hover { background: #218838; }
         
-        .cart-section, .payment-section {
+        .cart-section, .checkout-section, .contact-section {
             background: white;
             padding: 20px;
             margin-top: 30px;
@@ -113,7 +114,7 @@
             display: none;
         }
         .btn-confirm {
-            background: #007bff;
+            background: #25d366;
             color: white;
             border: none;
             padding: 12px;
@@ -124,14 +125,35 @@
             font-weight: bold;
             margin-top: 15px;
         }
-        .btn-confirm:hover { background: #0056b3; }
+        .btn-confirm:hover { background: #1ebe5d; }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        .social-btn {
+            padding: 10px 18px;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            display: inline-block;
+        }
+        .whatsapp { background: #25d366; }
+        .instagram { background: #e4405f; }
+        .email { background: #6c757d; }
+        .phone { background: #17a2b8; }
+        .social-btn:hover { opacity: 0.9; }
     </style>
 </head>
 <body>
 
     <header>
         <h1>Alvora Clothing Store</h1>
-        <div>🛒 عدد المنتجات في السلة: <span id="cart-count">0</span></div>
+        <div>🛒 السلة: <span id="cart-count">0</span></div>
     </header>
 
     <h2>تشكيلة الملابس المتاحة</h2>
@@ -141,26 +163,23 @@
         <div class="card">
             <h3>جاكيت Alvora</h3>
             <p class="price">650 جنيه</p>
-            
             <div class="option-group">
-                <label for="size-1">المقاس:</label>
+                <label>المقاس:</label>
                 <select id="size-1">
-                    <option value="S">S - صغير</option>
-                    <option value="M">M - وسط</option>
-                    <option value="L">L - كبير</option>
-                    <option value="XL">XL - كبير جداً</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
                 </select>
             </div>
-
             <div class="option-group">
-                <label for="color-1">اللون:</label>
+                <label>اللون:</label>
                 <select id="color-1">
                     <option value="أسود">أسود</option>
                     <option value="زيتي">زيتي</option>
                     <option value="جملي">جملي</option>
                 </select>
             </div>
-
             <button class="btn-add" onclick="addToCart('جاكيت Alvora', 650, 'size-1', 'color-1')">إضافة إلى السلة</button>
         </div>
 
@@ -168,19 +187,17 @@
         <div class="card">
             <h3>تيشرت Alvora كاجوال</h3>
             <p class="price">250 جنيه</p>
-            
             <div class="option-group">
-                <label for="size-2">المقاس:</label>
+                <label>المقاس:</label>
                 <select id="size-2">
-                    <option value="S">S - صغير</option>
-                    <option value="M">M - وسط</option>
-                    <option value="L">L - كبير</option>
-                    <option value="XL">XL - كبير جداً</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
                 </select>
             </div>
-
             <div class="option-group">
-                <label for="color-2">اللون:</label>
+                <label>اللون:</label>
                 <select id="color-2">
                     <option value="أبيض">أبيض</option>
                     <option value="أسود">أسود</option>
@@ -188,7 +205,6 @@
                     <option value="رمادي">رمادي</option>
                 </select>
             </div>
-
             <button class="btn-add" onclick="addToCart('تيشرت Alvora كاجوال', 250, 'size-2', 'color-2')">إضافة إلى السلة</button>
         </div>
 
@@ -196,26 +212,23 @@
         <div class="card">
             <h3>شورت Alvora صيفي</h3>
             <p class="price">200 جنيه</p>
-            
             <div class="option-group">
-                <label for="size-3">المقاس:</label>
+                <label>المقاس:</label>
                 <select id="size-3">
-                    <option value="S">S - صغير</option>
-                    <option value="M">M - وسط</option>
-                    <option value="L">L - كبير</option>
-                    <option value="XL">XL - كبير جداً</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
                 </select>
             </div>
-
             <div class="option-group">
-                <label for="color-3">اللون:</label>
+                <label>اللون:</label>
                 <select id="color-3">
                     <option value="بيج">بيج</option>
                     <option value="أسود">أسود</option>
                     <option value="كحلي">كحلي</option>
                 </select>
             </div>
-
             <button class="btn-add" onclick="addToCart('شورت Alvora صيفي', 200, 'size-3', 'color-3')">إضافة إلى السلة</button>
         </div>
 
@@ -223,26 +236,23 @@
         <div class="card">
             <h3>قميص Alvora كلاسيك</h3>
             <p class="price">300 جنيه</p>
-            
             <div class="option-group">
-                <label for="size-4">المقاس:</label>
+                <label>المقاس:</label>
                 <select id="size-4">
-                    <option value="S">S - صغير</option>
-                    <option value="M">M - وسط</option>
-                    <option value="L">L - كبير</option>
-                    <option value="XL">XL - كبير جداً</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
                 </select>
             </div>
-
             <div class="option-group">
-                <label for="color-4">اللون:</label>
+                <label>اللون:</label>
                 <select id="color-4">
                     <option value="أبيض">أبيض</option>
                     <option value="أزرق فاتح">أزرق فاتح</option>
                     <option value="أسود">أسود</option>
                 </select>
             </div>
-
             <button class="btn-add" onclick="addToCart('قميص Alvora كلاسيك', 300, 'size-4', 'color-4')">إضافة إلى السلة</button>
         </div>
 
@@ -250,26 +260,23 @@
         <div class="card">
             <h3>بنطلون جينز Alvora</h3>
             <p class="price">350 جنيه</p>
-            
             <div class="option-group">
-                <label for="size-5">المقاس:</label>
+                <label>المقاس:</label>
                 <select id="size-5">
-                    <option value="S">S - صغير</option>
-                    <option value="M">M - وسط</option>
-                    <option value="L">L - كبير</option>
-                    <option value="XL">XL - كبير جداً</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
                 </select>
             </div>
-
             <div class="option-group">
-                <label for="color-5">اللون:</label>
+                <label>اللون:</label>
                 <select id="color-5">
                     <option value="أزرق فاتح">أزرق فاتح</option>
                     <option value="أزرق غامق">أزرق غامق</option>
                     <option value="أسود">أسود</option>
                 </select>
             </div>
-
             <button class="btn-add" onclick="addToCart('بنطلون جينز Alvora', 350, 'size-5', 'color-5')">إضافة إلى السلة</button>
         </div>
 
@@ -277,19 +284,17 @@
         <div class="card">
             <h3>سويت شيرت Alvora</h3>
             <p class="price">450 جنيه</p>
-            
             <div class="option-group">
-                <label for="size-6">المقاس:</label>
+                <label>المقاس:</label>
                 <select id="size-6">
-                    <option value="S">S - صغير</option>
-                    <option value="M">M - وسط</option>
-                    <option value="L">L - كبير</option>
-                    <option value="XL">XL - كبير جداً</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
                 </select>
             </div>
-
             <div class="option-group">
-                <label for="color-6">اللون:</label>
+                <label>اللون:</label>
                 <select id="color-6">
                     <option value="رمادي">رمادي</option>
                     <option value="أسود">أسود</option>
@@ -297,52 +302,73 @@
                     <option value="أحمر">أحمر</option>
                 </select>
             </div>
-
             <button class="btn-add" onclick="addToCart('سويت شيرت Alvora', 450, 'size-6', 'color-6')">إضافة إلى السلة</button>
         </div>
 
     </div>
 
-    <!-- قسم السلة والإلغاء -->
+    <!-- قسم السلة -->
     <div class="cart-section">
-        <h2>تفاصيل الطلب والسلة</h2>
+        <h2>سلة المشتريات</h2>
         <div id="cart-items">
-            <p>السلة فارغة حالياً. اختاري المقاس واللون وأضيفي المنتجات للطلب!</p>
+            <p>السلة فارغة حالياً.</p>
         </div>
         <div class="total-box">
-            الإجمالي النهائي: <span id="total-price" style="color: #28a745;">0</span> جنيه
+            الإجمالي: <span id="total-price" style="color: #28a745;">0</span> جنيه
         </div>
     </div>
 
-    <!-- قسم طريقة الدفع -->
-    <div class="payment-section">
-        <h2>طريقة الدفع</h2>
+    <!-- بيانات العميل وطرق الدفع -->
+    <div class="checkout-section">
+        <h2>بيانات العميل وطريقة الدفع</h2>
+        
         <div class="option-group">
-            <label for="payment-method">اختر طريقة الدفع المناسبة:</label>
+            <label>الاسم الكامل:</label>
+            <input type="text" id="cust-name" placeholder="اكتب اسمك هنا">
+        </div>
+
+        <div class="option-group">
+            <label>رقم الهاتف:</label>
+            <input type="text" id="cust-phone" placeholder="رقم الموبايل للتواصل">
+        </div>
+
+        <div class="option-group">
+            <label>عنوان التوصيل:</label>
+            <input type="text" id="cust-address" placeholder="المحافظة، المدينة، العنوان بالتفصيل">
+        </div>
+
+        <div class="option-group">
+            <label>طريقة الدفع:</label>
             <select id="payment-method" onchange="showPaymentInfo()">
                 <option value="">-- اختر طريقة الدفع --</option>
-                <option value="cash">الدفع كاش عند الاستلام</option>
-                <option value="instapay">InstaPay (إنستاباي)</option>
-                <option value="vodafone">فودافون كاش (Vodafone Cash)</option>
-                <option value="manual">دفع يدوي / تحويل بنكي مباشر</option>
+                <option value="كاش مع المندوب">كاش مع المندوب عند الاستلام</option>
+                <option value="فودافون كاش">فودافون كاش (01041438307)</option>
+                <option value="انستا باي">انستا باي (InstaPay)</option>
             </select>
         </div>
 
-        <!-- تفاصيل طريقة الدفع المحددة -->
-        <div id="info-cash" class="payment-info">
-            💵 <b>الدفع كاش:</b> يتم سداد المبلغ للمندوب عند استلام الشحنة.
+        <div id="info-فودافون كاش" class="payment-info">
+            📱 يرجى التحويل على رقم فودافون كاش: <b>01041438307</b> وإرسال الإيصال.
         </div>
-        <div id="info-instapay" class="payment-info">
-            ⚡ <b>إنستاباي:</b> يرجى التحويل على معرف InstaPay التالي: <b>alvora@instapay</b>
+        <div id="info-انستا باي" class="payment-info">
+            ⚡ يرجى التحويل على حساب انستا باي الخاص بالمتجر وإرسال الإيصال.
         </div>
-        <div id="info-vodafone" class="payment-info">
-            📱 <b>فودافون كاش:</b> يرجى التحويل على رقم المحفظة: <b>01000000000</b>
-        </div>
-        <div id="info-manual" class="payment-info">
-            🏦 <b>دفع يدوي:</b> يرجى التواصل معنا وإرسال إيصال التحويل على رقم الواتساب الخاص بالمتجر.
+        <div id="info-كاش مع المندوب" class="payment-info">
+            💵 سيتم الدفع نقداً للمندوب عند استلام الطلب.
         </div>
 
-        <button class="btn-confirm" onclick="checkout()">تأكيد الطلب والدفع</button>
+        <button class="btn-confirm" onclick="sendToWhatsApp()">إرسال الطلب عبر الواتساب 💬</button>
+    </div>
+
+    <!-- التواصل الاجتماعي -->
+    <div class="contact-section">
+        <h2>تواصل معنا</h2>
+        <div class="social-links">
+            <a href="https://wa.me/201041438307" target="_blank" class="social-btn whatsapp">💬 واتساب</a>
+            <a href="tel:01041438307" class="social-btn phone">📞 اتصال</a>
+            <a href="https://www.instagram.com/alvora_clothing?igsh=aGxubW5waDdvaXdi" target="_blank" class="social-btn instagram">📸 إنستجرام</a>
+            <a href="mailto:mn1645322@gmail.com" class="social-btn email">✉️ البريد الإلكتروني</a>
+        </div>
     </div>
 
     <script>
@@ -377,7 +403,7 @@
             cartCount.textContent = cart.length;
 
             if (cart.length === 0) {
-                cartItemsContainer.innerHTML = '<p>السلة فارغة حالياً. اختاري المقاس واللون وأضيفي المنتجات للطلب!</p>';
+                cartItemsContainer.innerHTML = '<p>السلة فارغة حالياً.</p>';
                 totalPrice.textContent = 0;
                 return;
             }
@@ -394,7 +420,7 @@
                             <br>
                             <small>المقاس: <b>${item.size}</b> | اللون: <b>${item.color}</b> - السعر: ${item.price} جنيه</small>
                         </div>
-                        <button class="btn-remove" onclick="removeFromCart(${item.id})">إلغاء هذا الطلب ❌</button>
+                        <button class="btn-remove" onclick="removeFromCart(${item.id})">إلغاء ❌</button>
                     </div>
                 `;
             });
@@ -405,35 +431,47 @@
 
         function showPaymentInfo() {
             const method = document.getElementById('payment-method').value;
-            const infos = document.querySelectorAll('.payment-info');
-            
-            // إخفاء كل التلميحات أولاً
-            infos.forEach(info => info.style.display = 'none');
-
-            // إظهار التلميح الخاص بالطريقة المختارة
+            document.querySelectorAll('.payment-info').forEach(info => info.style.display = 'none');
             if (method) {
-                const activeInfo = document.getElementById('info-' + method);
-                if (activeInfo) activeInfo.style.display = 'block';
+                const target = document.getElementById('info-' + method);
+                if (target) target.style.display = 'block';
             }
         }
 
-        function checkout() {
+        function sendToWhatsApp() {
             if (cart.length === 0) {
-                alert('السلة فارغة! قم بإضافة منتجات أولاً.');
+                alert('السلة فارغة! برجاء اختيار منتجات أولاً.');
                 return;
             }
 
-            const method = document.getElementById('payment-method').value;
-            if (!method) {
-                alert('يرجى اختيار طريقة الدفع أولاً!');
+            const name = document.getElementById('cust-name').value.trim();
+            const phone = document.getElementById('cust-phone').value.trim();
+            const address = document.getElementById('cust-address').value.trim();
+            const payment = document.getElementById('payment-method').value;
+
+            if (!name || !phone || !address || !payment) {
+                alert('برجاء استيفاء جميع بيانات العميل وطريقة الدفع!');
                 return;
             }
 
-            alert('تم تسجيل طلبك بنجاح! شكراً لتسوقك من Alvora.');
-            cart = [];
-            updateCartUI();
-            document.getElementById('payment-method').value = '';
-            showPaymentInfo();
+            let message = `🛒 *طلب جديد من متجر Alvora*%0A%0A`;
+            message += `👤 *الاسم:* ${name}%0A`;
+            message += `📞 *الهاتف:* ${phone}%0A`;
+            message += `📍 *العنوان:* ${address}%0A`;
+            message += `💳 *طريقة الدفع:* ${payment}%0A%0A`;
+            message += `📦 *المنتجات المطلوبة:*%0A`;
+
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                message += `${index + 1}. ${item.name} - المقاس: ${item.size} - اللون: ${item.color} - ${item.price}ج%0A`;
+            });
+
+            message += `%0A💰 *الإجمالي النهائي:* ${total} جنيه`;
+
+            // توجيه العميل لرقم الواتساب الخاص بك بالرسالة الجاهزة
+            const whatsappUrl = `https://wa.me/201041438307?text=${message}`;
+            window.open(whatsappUrl, '_blank');
         }
     </script>
 
